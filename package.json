@@ -1,7 +1,13 @@
 {
   "name": "geopets-gp-device",
   "private": true,
-  "version": "0.36.0",
-  "description": "GeoPETS Checkpoint 036 static browser game, GitHub Pages deployment package",
-  "scripts": {"test": "node tests/validate.mjs"}
+  "version": "0.41.0",
+  "description": "GeoPETS Stage 1 candidate \u2014 not approved for live deployment",
+  "scripts": {
+    "test": "node tests/validate.mjs && node tests/stage1.mjs && node tests/smoke.cjs",
+    "test:browser": "node tests/browser.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
 }

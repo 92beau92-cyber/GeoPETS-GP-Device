@@ -1,0 +1,56 @@
+CHECKPOINT 041 — PROVISIONAL IMPLEMENTATION SPRINT
+Implementation: 18/400 sprint slots = 4.5%. Remaining: 382/400 = 95.5%.
+Automated logic verification: 4/400 = 1%. Browser-tested: 0. User-tested: 0.
+The 400 slots are a NEW provisional sprint ledger against the requested target,
+NOT a recovered mapping to historical improvement numbers. Original decisions are
+retained separately in work-stage1/400_improvement_tracker.csv. No claim of 200/400.
+
+Implemented: adaptive viewport shell and internal scrolling; reduced motion; HOME OS
+entry/dashboard, rooms, tasks, maintenance, cleaner convenience mode, bills, search,
+activity, JSON backup/import, battle journal and species move readiness guide.
+Core battle engine and nine embedded artwork assets remain byte-identical to 039.
+HOME OS is accessible from the Command Centre's HOME OS button. Battle journal and
+Move guide are in battle Settings. Existing Party/BAG assignment remains unchanged.
+
+TESTS
+npm test passed (see test-results/checkpoint041.txt). Extended mock tests exercise
+HOME OS task creation, invalid input rejection, exact-cent bills, backup validation,
+all nine new HOME OS screens, journal/guide rendering and snapshot restoration.
+Tests are simulated DOM, not real browser layout or click acceptance. Four entries
+have direct behavior assertions; others need interaction/visual acceptance.
+
+KNOWN LIMITS
+No browser/mobile visual acceptance. Frame artwork may distort at extreme aspect
+ratios; small-screen battle layout needs visual checks. Cleaner view is not access
+control. TAI remains existing local workflow, no connected AI. No added consumables,
+new combat balance or party mechanics in 041. Journal records completed player turns
+(max 50); HOME OS activity max 100. HOME OS imports replace rooms/tasks/bills and
+reset journal/activity. Export/import supports JSON; invalid files leave state intact.
+Existing OS IndexedDB persistence behavior preserved; storage failure requires export.
+No original household floorplan modified. No live website changes.
+
+STAGES
+1 UI/navigation: provisional candidate, acceptance pending.
+2 Gameplay: journal/guide added; engine preserved; broader work pending.
+3 Command Centre: HOME OS connected; TAI backend deferred.
+4 HOME OS: local dashboard/tasks/rooms/bills first version; security/store deferred.
+5 Reliability: automated tests and portable export; browser acceptance pending.
+
+RESUME PROMPT
+Continue Checkpoint 041 from root index.html. Preserve gold/blue frame, artwork,
+engine and save formats. Read sprint041/STATUS.txt and implementation_tracker.csv.
+Do not rerun historical audits. Implement next gameplay batch: usable consumables
+and party feedback, with meaningful logic tests. First export a checkpoint. Use
+provisional sprint IDs; do not invent historical mappings. Run npm test, and browser
+checks when supported. Fix mobile layout only with evidence where possible. Export
+all source after every batch. Do not deploy or merge main without Beau's approval.
+
+BUILD / RECOVERY
+Root index.html is the complete static game with embedded artwork. It can be opened
+locally; browser storage behavior depends on origin. npm test runs Node checks.
+sprint041/baseline-040.html is exact prior source. features.js and layout.css are the
+041 additions already embedded in index.html; do not run work-stage1/build_patch.py
+against 041 (it recreates 040). Saved games in the user's browser are not in this ZIP.
+To upload after approval: back up production and export player saves, upload ONLY
+root index.html to a development branch in 92beau92-cyber/GeoPETS-GP-Device, test,
+then obtain approval before main merge/Pages publication. Roll back using baseline.

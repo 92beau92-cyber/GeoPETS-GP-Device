@@ -1,31 +1,29 @@
-# GeoPETS G-P Device — GitHub Pages launch package
+# GeoPETS — Checkpoint 040 Stage 1 candidate
 
-This package contains the **original Checkpoint 036 browser game** as `index.html`, without replacing the gameplay with a mockup or demo. The site is static and can be hosted on GitHub Pages.
+This is an incremental patch of the existing gold-and-blue G-P Device. It is NOT approved for production. No live GitHub changes have been made.
 
-## Publish to GitHub Pages
+Open `index.html` to review. Use HTTP hosting for reliable origin-based browser storage; moving between file URLs and a hosted site does not automatically transfer local saves. Export a save before changing environments.
 
-1. Extract the ZIP locally. Upload **all contents** to the **root** of the intended GitHub repository, including the hidden `.github` folder and `.nojekyll` file. Do not upload the ZIP as the only repository file.
-2. On GitHub, open **Settings → Pages → Build and deployment → Source** and select **GitHub Actions**.
-3. Ensure the default branch is `main`, or edit the workflow's branch name if necessary.
-4. Commit and push. The GitHub Actions workflow runs `npm test`, then deploys the website.
-5. Open the GitHub Pages URL shown under Settings → Pages. The typical project URL format is `https://USERNAME.github.io/REPOSITORY/`.
+## Changes
+- Entry screen inside the rounded device screen, keyboard focus contained until entry.
+- Player labels remain a local chooser with shared saves, not authentication.
+- Replace competing 038/039 layout contracts with one final responsive contract.
+- Keep mobile text readable; allow document scrolling rather than shrinking the device to viewport height.
+- Centre header uses separate rows; action buttons have readable labels and larger targets.
+- Back returns to previous pages and restores ordinary input fields/scroll.
+- Existing game engine, species, move profiles, storage keys and embedded assets preserved.
+- Release metadata corrected to 040 candidate.
 
-## Local launch
+## Tests
+`npm test` runs static and lightweight DOM smoke tests (no dependencies required).
+For real browser testing, `npm install`, `npx playwright install chromium`, then `npm run test:browser`.
+The browser suite checks five viewports, entry containment, eleven OS pages, label/target checks, Back navigation, a battle turn and refresh persistence. It writes screenshots/reports into `test-results/`.
+A real iPhone/Safari check is still required; Chromium emulation is not iPhone certification.
 
-Open `index.html` in a browser. For a local HTTP origin (recommended for browser storage consistency), from this folder run `python -m http.server 8000` and open `http://localhost:8000/`.
+## Approval and deployment
+Branch: `work/stage-1-responsive-qa` (local only).
+Do not upload/merge this into live main until browser tests and user acceptance pass.
+The repository as cloned contained only README.md, index.html and package.json: the source package's advertised test files/deploy workflow were NOT present in main.
+No deployment workflow is added by this patch.
 
-## What is and is not verified
-
-- Static validation: original game shell, inline JavaScript parsing, key gameplay markers and packaging integrity.
-- NOT verified in this package: real-device gameplay testing, cross-browser save restoration, security penetration tests, online multiplayer, live AI agent APIs, live store/payment processing or all 400 proposed improvements.
-- GitHub Pages is **static hosting**, not a private authentication backend. Do not publish passwords, API keys, private household records, or sensitive snapshots in this public repository.
-- Browser save data typically belongs to the browser + website origin. A save from `file://` or another site may **not** automatically appear on GitHub Pages. Use the game's existing export/import controls where available and test them before relying on them.
-- A public GitHub repository exposes its source to visitors. Treat any in-browser role switches as UI controls, not secure server-side access control.
-
-## Release baseline
-
-`index.html` preserves the uploaded GeoPETS Checkpoint 036 source. Any future 400-improvement work must be separately implemented and accepted with regression testing before being marked complete.
-
-## Testing
-
-Run `npm test` with Node.js 22+. It validates the static source but does not execute a graphical browser.
+See work-stage1/STATUS.md, BASELINE_COMPARISON.md and the original 400-row tracker.

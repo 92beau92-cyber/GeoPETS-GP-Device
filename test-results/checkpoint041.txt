@@ -1,0 +1,17 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> geopets-gp-device@0.41.0 test
+> node tests/validate.mjs && node tests/stage1.mjs && node tests/smoke.cjs
+
+PASS: 2 inline JS block(s) parse; original gameplay markers present; SHA-256 74edfaefb236b3d44a86b46354c1254deb22a17e96343237b3d6b2253699f96a; 5840285 characters
+NOTE: static validation is not a browser playtest, security audit, or proof of all 400 features.
+{
+  "static": "PASS",
+  "scripts": 2,
+  "artworkCount": 9,
+  "engine": "byte-identical to 039",
+  "entry": "inside device",
+  "sha256": "74edfaefb236b3d44a86b46354c1254deb22a17e96343237b3d6b2253699f96a",
+  "browser": "NOT RUN"
+}
+PASS: full script boot with storage unavailable; 11 OS pages; 9+4 controls; exact-cent splits; receipt parser; 5-card hand; skip count; shift return matching/deduplication; OS save round-trip; ZIP download.

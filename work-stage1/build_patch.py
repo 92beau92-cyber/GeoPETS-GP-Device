@@ -1,0 +1,20 @@
+from pathlib import Path
+import re
+ROOT=Path(__file__).resolve().parents[1]
+s=(ROOT/'work-stage1/baseline-039.html').read_text()
+s=re.sub(r'/\* GP039 CORRECTIVE:[\s\S]*?(?=</style>)','',s,count=1)
+s=re.sub(r'/\* GP038: GLOBAL RESPONSIVE CONTRACT\.[\s\S]*?(?=</style>)','',s,count=1)
+gate=re.search(r'<section id="gp038-login"[\s\S]*?</section>',s).group(0)
+s=s.replace(gate,'',1).replace('<div class="screen">','<div class="screen">'+gate,1)
+s=re.sub(r'<script>/\* GP039 entry gate:[\s\S]*?</script>','',s,count=1)
+s=re.sub(r'<script>\s*/\* GP038: Reusable layout audit[\s\S]*?</script>','',s,count=1)
+s=re.sub(r'<span id="gp039-version"[^>]*>.*?</span>','',s)
+css=(ROOT/'work-stage1/device-layout.css').read_text()
+s=s.replace('<script>\n\nclass BaseGame','<style>\n'+css+'\n</style>\n<script>\n\nclass BaseGame',1)
+nav=(ROOT/'work-stage1/navigation.js').read_text()
+s=s.replace('initOS();\n\n})();',nav+'\ninitOS();\n\n})();',1)
+s=s.replace('</body>', '<script>\n'+(ROOT/'work-stage1/entry-and-audit.js').read_text()+'\n</script></body>')
+s=s.replace('Rollback 031','Rollback 040 candidate').replace("'Checkpoint '+BUILD_STAGE+' · '","'Checkpoint 040 candidate · '")
+s=s.replace("checkpoint:'036'","checkpoint:'040-stage1-candidate'").replace('G-P-Device checkpoint 036','G-P-Device checkpoint 040-stage1-candidate').replace("'G-P-Device_036_'","'G-P-Device_040_'" )
+(ROOT/'index.html').write_text(s)
+print('Built Stage 1 candidate',len(s.encode()),'bytes')
