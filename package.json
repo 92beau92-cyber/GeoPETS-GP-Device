@@ -1,0 +1,7 @@
+{
+  "name": "geopets-gp-device",
+  "private": true,
+  "version": "0.36.0",
+  "description": "GeoPETS Checkpoint 036 static browser game, GitHub Pages deployment package",
+  "scripts": {"test": "node tests/validate.mjs"}
+}
