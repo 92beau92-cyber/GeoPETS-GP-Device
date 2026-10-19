@@ -223,6 +223,39 @@
     padding:0!important;
   }
 }
+
+/* GP038: GLOBAL RESPONSIVE CONTRACT. Applies to all device pages. */
+html,body{margin:0;max-width:100%;overflow-x:hidden}
+#gp31 .heading{display:flex;align-items:center;gap:2px;padding:1px 3px;min-width:0}
+#gp31 .heading>div:first-child{flex:0 1 auto;min-width:0;max-width:19%}
+#gp31 .heading #geo-centre{flex:1 1 auto;min-width:0;max-width:42%;font:600 clamp(8px,2.4cqw,13px)/1.05 Georgia,serif;padding:2px;white-space:normal;text-align:center}
+#gp31 .heading .clock{flex:0 1 auto;min-width:0;max-width:31%;font-size:clamp(7px,1.8cqw,11px);line-height:1.05;overflow:hidden}
+#gp31 .heading #settings{flex:0 0 auto;min-width:18px;width:clamp(18px,4cqw,24px);max-width:24px;font-size:clamp(14px,3.5cqw,20px)}
+#gp31 #os-panel{min-height:0;grid-template-rows:minmax(0,53fr) minmax(0,37fr) minmax(12px,3fr) minmax(34px,7fr);gap:clamp(2px,0.6cqw,6px);padding:clamp(3px,1cqw,9px)}
+#gp31 #os-main{min-height:0;min-width:0;padding:clamp(4px,1.4cqw,12px);font-size:clamp(10px,2.5cqw,14px);line-height:1.2}
+#gp31 #os-main h2{font-size:clamp(13px,4.3cqw,23px);line-height:1.1;margin:0 0 4px;overflow-wrap:anywhere}
+#gp31 #os-grid{min-height:0;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:clamp(2px,0.7cqw,6px)}
+#gp31 #os-grid button{min-height:0;min-width:0;padding:clamp(1px,0.7cqw,5px);gap:1px;overflow:hidden}
+#gp31 #os-grid button>span{font-size:clamp(12px,4cqw,23px);line-height:1}
+#gp31 #os-grid button>b{font-size:clamp(9px,2.65cqw,13px);line-height:1.12;overflow-wrap:anywhere;hyphens:auto;max-width:100%}
+#gp31 #os-nav{min-height:0;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(2px,0.6cqw,5px)}
+#gp31 #os-nav button{min-height:0;min-width:0;padding:2px;font-size:clamp(9px,2.55cqw,12px);line-height:1.1;overflow-wrap:anywhere}
+#gp31 #os-note{min-height:0;font-size:clamp(8px,2.2cqw,11px);line-height:1.05}
+#gp31 .os-companion{gap:clamp(1px,0.5cqw,5px)}
+#gp31 .os-companion .figure{height:clamp(48px,18cqw,110px);max-height:38%;width:min(80%,170px);background-size:contain}
+#gp31 .os-companion strong{font-size:clamp(12px,3.4cqw,17px)}
+#gp31 .os-companion small{font-size:clamp(9px,2.5cqw,12px)}
+#gp31 .os-subtitle{font-size:clamp(10px,2.8cqw,14px);line-height:1.15;margin:3px 0}
+@media(max-width:700px){#gp31{width:min(100%,calc((100dvh - 16px) * 0.507));margin-inline:auto}#gp31 .heading strong{display:none}#gp31 .heading .clock small{display:none}#gp31 .os-companion .figure{height:clamp(40px,16cqw,85px)}}
+@media(max-height:680px){#gp31 #os-panel{grid-template-rows:minmax(0,48fr) minmax(0,42fr) minmax(12px,3fr) minmax(32px,7fr)}#gp31 .os-companion .figure{height:clamp(30px,13cqw,65px)}}
+#gp038-login[hidden]{display:none!important}
+#gp038-login{position:fixed;inset:0;z-index:2147483640;background:#04101cf2;color:#f5e6c9;display:grid;place-items:center;padding:16px;font:16px/1.4 system-ui,sans-serif;overflow:auto}
+#gp038-login .gp038-card{width:min(100%,420px);background:linear-gradient(145deg,#123b55,#061b2d);border:2px solid #c9a95e;border-radius:22px;padding:24px;box-shadow:0 12px 55px #000a}
+#gp038-login h1{font:500 27px Georgia,serif;color:#f3d88d;margin:0 0 10px}
+#gp038-login p{margin:8px 0 14px}#gp038-login label{display:block;font-weight:600;margin:12px 0 5px}
+#gp038-login select,#gp038-login button{width:100%;min-height:46px;border:1px solid #c9a95e;border-radius:10px;padding:10px;background:#102f47;color:#fff;font:inherit}
+#gp038-login button{background:#205c72;margin-top:14px;font-weight:700;cursor:pointer}
+#gp038-login small{display:block;font-size:12px;color:#c3d4dd;margin-top:12px}
 </style>
 <script>
 
@@ -477,4 +510,12 @@ initOS();
 
 
 </script>
-</body></html>
+<section id="gp038-login" role="dialog" aria-modal="true" aria-labelledby="gp038-login-title"><div class="gp038-card"><h1 id="gp038-login-title">Welcome to GeoPETS</h1><p>Choose who is playing before entering your G-P Device.</p><label for="gp038-profile">Local player</label><select id="gp038-profile"><option value="Beau">Beau</option><option value="Kristy">Kristy</option><option value="Lucian">Lucian</option><option value="Guest">Guest</option></select><button id="gp038-enter" type="button">Enter GeoPETS</button><small>Local player selection only — not secure authentication. Existing saves are shared, not separated by player. Do not enter private data.</small></div></section><script>
+/* GP038: Explicit local profile selection (not secure authentication). */
+(function(){const gate=document.getElementById('gp038-login'),select=document.getElementById('gp038-profile'),start=document.getElementById('gp038-enter');if(!gate||!select||!start)return;
+try{const last=localStorage.getItem('gp038-last-profile');if(last&&Array.from(select.options).some(o=>o.value===last))select.value=last;}catch{}
+function show(){gate.hidden=false;}function enter(){try{localStorage.setItem('gp038-last-profile',select.value);}catch{}window.GeoPETSLocalProfile=select.value;gate.hidden=true;try{window.GeoPETSLayoutAudit?.();}catch{}}
+start.addEventListener('click',enter);show();window.GeoPETSShowProfileGate=show;})();
+/* GP038: Reusable layout audit for every view; no silent content removal. */
+(function(){let pending=false;function audit(){pending=false;const root=document.querySelector('#gp31');if(!root)return {ok:false,issues:['device missing']};const screen=root.querySelector('.screen'),issues=[],tol=3,device=root.querySelector('.device');if(device&&innerWidth<=700&&device.getBoundingClientRect().bottom>innerHeight+tol)issues.push('Device below viewport');if(screen){for(const el of screen.querySelectorAll('button')){if(!el.getClientRects().length||el.offsetParent===null)continue;const r=el.getBoundingClientRect();if(r.width<12||r.height<12)issues.push('Small button '+(el.id||el.textContent.trim().slice(0,24)));const b=el.querySelector('b');if(b&&b.scrollWidth>b.clientWidth+tol)issues.push('Label overflow '+b.textContent.trim());}const title=root.querySelector('#geo-centre');if(title&&title.scrollWidth>title.clientWidth+tol)issues.push('GEO CENTRE overflow');}const result={ok:issues.length===0,issues,viewport:{width:innerWidth,height:innerHeight}};window.GeoPETSLastLayoutAudit=result;if(issues.length)console.warn('[GeoPETS Layout QA]',result);return result;}function schedule(){if(pending)return;pending=true;requestAnimationFrame(audit)}window.GeoPETSLayoutAudit=audit;addEventListener('resize',schedule);addEventListener('orientationchange',schedule);document.addEventListener('DOMContentLoaded',()=>{const root=document.querySelector('#gp31');if(root&&typeof MutationObserver!=='undefined')new MutationObserver(schedule).observe(root,{attributes:true,attributeFilter:['class','hidden'],subtree:true});schedule()});})();
+</script></body></html>
